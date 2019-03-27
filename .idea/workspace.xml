@@ -4,7 +4,6 @@
     <list default="true" id="d425b513-9ff3-4e13-afc5-8772b160322a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/Api/ProgrammerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/Api/ProgrammerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testing.php" beforeDir="false" afterPath="$PROJECT_DIR$/testing.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/Api/ProgrammerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+            <state relative-caret-position="248">
+              <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
               <folding>
                 <element signature="e#50#96#0#PHP" expanded="true" />
               </folding>
@@ -26,11 +25,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Tests/ProgrammerControllerTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testing.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
+            <state relative-caret-position="108">
+              <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -50,6 +58,7 @@
       <list>
         <option value="$PROJECT_DIR$/testing.php" />
         <option value="$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/Api/ProgrammerController.php" />
+        <option value="$PROJECT_DIR$/src/KnpU/CodeBattle/Tests/ProgrammerControllerTest.php" />
       </list>
     </option>
   </component>
@@ -101,27 +110,13 @@
             <path>
               <item name="code-rest" type="b2602c69:ProjectViewProjectNode" />
               <item name="code-rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KnpU" type="462c0819:PsiDirectoryNode" />
-              <item name="CodeBattle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="code-rest" type="b2602c69:ProjectViewProjectNode" />
               <item name="code-rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KnpU" type="462c0819:PsiDirectoryNode" />
-              <item name="CodeBattle" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
-              <item name="Api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="code-rest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code-rest" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="KnpU" type="462c0819:PsiDirectoryNode" />
-              <item name="CodeBattle" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -162,16 +157,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1553691191235</updated>
-      <workItem from="1553691192486" duration="7378000" />
+      <workItem from="1553691192486" duration="9235000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7378000" />
+    <option name="totallyTimeSpent" value="9235000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13113007" />
@@ -181,7 +175,7 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="RNConsole" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.25111112" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.30888888" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -218,20 +212,32 @@
     <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Model/Programmer.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/testing.php">
+    <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/ProgrammerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="28" column="29" selection-start-line="28" selection-start-column="29" selection-end-line="28" selection-end-column="29" />
-        </state>
+        <state relative-caret-position="-2835" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Controller/Api/ProgrammerController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="53" column="56" selection-start-line="53" selection-start-column="56" selection-end-line="53" selection-end-column="56" />
+        <state relative-caret-position="248">
+          <caret line="71" lean-forward="true" selection-start-line="71" selection-end-line="71" />
           <folding>
             <element signature="e#50#96#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testing.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="7" selection-start-line="7" selection-end-line="21" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/KnpU/CodeBattle/Tests/ProgrammerControllerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="29" column="52" selection-start-line="29" selection-start-column="52" selection-end-line="29" selection-end-column="52" />
         </state>
       </provider>
     </entry>
