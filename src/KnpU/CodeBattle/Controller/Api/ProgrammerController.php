@@ -18,17 +18,14 @@ class ProgrammerController extends BaseController
         $controllers->get('/api/programmers', array($this, 'listAction'));
         $controllers->get('/api/programmers/{nickname}', array($this, 'showAction'))
             ->bind('api_programmers_show');
+        $controllers->put('/api/programmers/{nickname}', array($this, 'updateAction'));
     }
 
     public function newAction(Request $request)
     {
-        $data = json_decode($request->getContent(), true);
-
         $programmer = new Programmer();
-        $programmer->nickname = $data['nickname'];
-        $programmer->avatarNumber = $data['avatarNumber'];
-        $programmer->tagLine = $data['tagLine'];
-        $programmer->userId = $this->findUserByUsername('weaverryan')->id;
+
+        $this->handleRequest($request, $programmer);
 
         $this->save($programmer);
 
@@ -40,6 +37,24 @@ class ProgrammerController extends BaseController
 
         $response = new JsonResponse($data, 201);
         $response->headers->set('Location', $url);
+
+        return $response;
+    }
+
+    public function updateAction(Request $request, $nickname)
+    {
+        $programmer = $this->getProgrammerRepository()
+            ->findOneByNickname($nickname);
+
+        if ($programmer) {
+            $this->throw404("Oh no! This programmer has deserted. we'll send a serch patrol to search him");
+        }
+
+        $this->handleRequest($request, $programmer);
+
+        $data = $this->serializeProgrammer($programmer);
+
+        $response = new JsonResponse($data, 200);
 
         return $response;
     }
@@ -83,6 +98,31 @@ class ProgrammerController extends BaseController
             'powerLevel' => $programmer->powerLevel,
             'tagLine' => $programmer->tagLine
         );
+    }
+
+    public function handleRequest(Request $request, Programmer $programmer)
+    {
+        $data = json_decode($request->getContent(), true);
+
+        if ($data === null) {
+            throw new \Exception('Invalid JSON!!! ' . $request->getContent());
+        }
+
+        $isNew = !$programmer->id;
+
+        $apiProperties = array('avatarNumber', 'tagLine');
+        if ($isNew) {
+            $apiProperties[] = 'nickname';
+        }
+
+        foreach ($apiProperties as $property) {
+            $val = isset($data[$property]) ? $data[$property] : null;
+            $programmer->$property = $val;
+        }
+
+        $programmer->userId = $this->findUserByUsername('weaverryan')->id;
+
+        $this->save($programmer);
     }
 
 }
