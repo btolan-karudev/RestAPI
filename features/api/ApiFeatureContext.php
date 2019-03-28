@@ -17,7 +17,7 @@ use Symfony\Component\ExpressionLanguage\SyntaxError;
 use KnpU\CodeBattle\Behat\EntityLookup;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-require_once __DIR__.'/../../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
+require_once __DIR__ . '/../../vendor/phpunit/phpunit/src/Framework/Assert/Functions.php';
 
 /**
  * Class Adapted from: https://github.com/philsturgeon/build-apis-you-wont-hate/blob/master/chapter12/app/tests/behat/features/bootstrap/FeatureContext.php
@@ -122,6 +122,14 @@ class ApiFeatureContext extends BehatContext
     }
 
     /**
+     * @BeforeScenario
+     */
+    public function clearDatabase()
+    {
+        $this->getProjectHelper()->reloadDatabase();
+    }
+
+    /**
      * @Given /^I have the payload:$/
      */
     public function iHaveThePayload(PyStringNode $requestPayload)
@@ -216,9 +224,9 @@ class ApiFeatureContext extends BehatContext
         if (preg_match('#application\/(.)*\+?json#', $contentType)) {
             $bodyOutput = $response->getBody();
         } else {
-            $bodyOutput = 'Output is "'.$contentType.'", which is not JSON and is therefore scary. Run the request manually.';
+            $bodyOutput = 'Output is "' . $contentType . '", which is not JSON and is therefore scary. Run the request manually.';
         }
-        assertSame((int) $statusCode, (int) $this->getResponse()->getStatusCode(), $bodyOutput);
+        assertSame((int)$statusCode, (int)$this->getResponse()->getStatusCode(), $bodyOutput);
     }
 
     /**
@@ -227,7 +235,7 @@ class ApiFeatureContext extends BehatContext
     public function theHeaderShouldBe($headerName, $expectedHeaderValue)
     {
         $response = $this->getResponse();
-        assertEquals($expectedHeaderValue, (string) $response->getHeader($headerName));
+        assertEquals($expectedHeaderValue, (string)$response->getHeader($headerName));
     }
 
     /**
@@ -251,7 +259,7 @@ class ApiFeatureContext extends BehatContext
         assertEquals(
             $expectedValue,
             $actualValue,
-            "Asserting the [$property] property in current scope equals [$expectedValue]: ".json_encode($payload)
+            "Asserting the [$property] property in current scope equals [$expectedValue]: " . json_encode($payload)
         );
     }
 
@@ -268,7 +276,7 @@ class ApiFeatureContext extends BehatContext
         assertContains(
             $expectedValue,
             $actualValue,
-            "Asserting the [$property] property in current scope contains [$expectedValue]: ".json_encode($payload)
+            "Asserting the [$property] property in current scope contains [$expectedValue]: " . json_encode($payload)
         );
     }
 
@@ -285,7 +293,7 @@ class ApiFeatureContext extends BehatContext
         assertNotContains(
             $expectedValue,
             $actualValue,
-            "Asserting the [$property] property in current scope does not contain [$expectedValue]: ".json_encode($payload)
+            "Asserting the [$property] property in current scope does not contain [$expectedValue]: " . json_encode($payload)
         );
     }
 
@@ -334,7 +342,7 @@ class ApiFeatureContext extends BehatContext
 
         assertTrue(
             is_array($actualValue),
-            "Asserting the [$property] property in current scope [{$this->scope}] is an array: ".json_encode($payload)
+            "Asserting the [$property] property in current scope [{$this->scope}] is an array: " . json_encode($payload)
         );
     }
 
@@ -349,7 +357,7 @@ class ApiFeatureContext extends BehatContext
 
         assertTrue(
             is_object($actualValue),
-            "Asserting the [$property] property in current scope [{$this->scope}] is an object: ".json_encode($payload)
+            "Asserting the [$property] property in current scope [{$this->scope}] is an object: " . json_encode($payload)
         );
     }
 
@@ -363,7 +371,7 @@ class ApiFeatureContext extends BehatContext
 
         assertTrue(
             is_array($scopePayload) and $scopePayload === array(),
-            "Asserting the [$property] property in current scope [{$this->scope}] is an empty array: ".json_encode($payload)
+            "Asserting the [$property] property in current scope [{$this->scope}] is an empty array: " . json_encode($payload)
         );
     }
 
@@ -377,7 +385,7 @@ class ApiFeatureContext extends BehatContext
         assertCount(
             $count,
             $this->arrayGet($payload, $property),
-            "Asserting the [$property] property contains [$count] items: ".json_encode($payload)
+            "Asserting the [$property] property contains [$count] items: " . json_encode($payload)
         );
     }
 
@@ -391,7 +399,7 @@ class ApiFeatureContext extends BehatContext
         isType(
             'int',
             $this->arrayGet($payload, $property),
-            "Asserting the [$property] property in current scope [{$this->scope}] is an integer: ".json_encode($payload)
+            "Asserting the [$property] property in current scope [{$this->scope}] is an integer: " . json_encode($payload)
         );
     }
 
@@ -405,7 +413,7 @@ class ApiFeatureContext extends BehatContext
         isType(
             'string',
             $this->arrayGet($payload, $property, true),
-            "Asserting the [$property] property in current scope [{$this->scope}] is a string: ".json_encode($payload)
+            "Asserting the [$property] property in current scope [{$this->scope}] is a string: " . json_encode($payload)
         );
     }
 
@@ -448,7 +456,7 @@ class ApiFeatureContext extends BehatContext
         $payload = $this->getScopePayload();
         $actualValue = $this->arrayGet($payload, $property);
 
-        if (! in_array($expectedValue, array('true', 'false'))) {
+        if (!in_array($expectedValue, array('true', 'false'))) {
             throw new \InvalidArgumentException("Testing for booleans must be represented by [true] or [false].");
         }
 
@@ -473,7 +481,7 @@ class ApiFeatureContext extends BehatContext
 
         assertSame(
             $actualValue,
-            (int) $expectedValue,
+            (int)$expectedValue,
             "Asserting the [$property] property in current scope [{$this->scope}] is an integer equalling [$expectedValue]."
         );
     }
@@ -486,7 +494,7 @@ class ApiFeatureContext extends BehatContext
         $payload = $this->getScopePayload();
         $actualValue = $this->arrayGet($payload, $property);
 
-        $valid = explode("\n", (string) $options);
+        $valid = explode("\n", (string)$options);
 
         assertTrue(
             in_array($actualValue, $valid),
@@ -519,7 +527,7 @@ class ApiFeatureContext extends BehatContext
      */
     public function thePropertiesExist(PyStringNode $propertiesString)
     {
-        foreach (explode("\n", (string) $propertiesString) as $property) {
+        foreach (explode("\n", (string)$propertiesString) as $property) {
             $this->thePropertyExists($property);
         }
     }
@@ -567,7 +575,7 @@ class ApiFeatureContext extends BehatContext
                 // print some debug details
                 $this->printDebug('');
                 $this->printDebug('<error>Failure!</error> when making the following request:');
-                $this->printDebug(sprintf('<comment>%s</comment>: <info>%s</info>', $this->lastRequest->getMethod(), $this->lastRequest->getUrl())."\n");
+                $this->printDebug(sprintf('<comment>%s</comment>: <info>%s</info>', $this->lastRequest->getMethod(), $this->lastRequest->getUrl()) . "\n");
 
                 if ($this->response->isContentType('application/json') || $this->response->isContentType('+json')) {
                     $data = json_decode($body);
@@ -588,7 +596,7 @@ class ApiFeatureContext extends BehatContext
                         // finds the h1 and h2 tags and prints them only
                         $crawler = new Crawler($body);
                         foreach ($crawler->filter('h1, h2')->extract(array('_text')) as $header) {
-                            $this->printDebug(sprintf('        '.$header));
+                            $this->printDebug(sprintf('        ' . $header));
                         }
                     } else {
                         $this->printDebug($body);
@@ -605,7 +613,7 @@ class ApiFeatureContext extends BehatContext
      */
     protected function getResponse()
     {
-        if (! $this->response) {
+        if (!$this->response) {
             throw new Exception("You must first make a request to check a response.");
         }
 
@@ -619,7 +627,7 @@ class ApiFeatureContext extends BehatContext
      */
     protected function getResponsePayload()
     {
-        if (! $this->responsePayload) {
+        if (!$this->responsePayload) {
             $json = json_decode($this->getResponse()->getBody(true), true);
 
             if (json_last_error() !== JSON_ERROR_NONE) {
@@ -636,7 +644,7 @@ class ApiFeatureContext extends BehatContext
                         $message .= '(Unexpected control character found).';
                         break;
                     case JSON_ERROR_SYNTAX:
-                        $message .= '(Syntax error, malformed JSON): '."\n\n".$this->getResponse()->getBody(true);
+                        $message .= '(Syntax error, malformed JSON): ' . "\n\n" . $this->getResponse()->getBody(true);
                         break;
                     case JSON_ERROR_UTF8:
                         $message .= '(Malformed UTF-8 characters, possibly incorrectly encoded).';
@@ -665,7 +673,7 @@ class ApiFeatureContext extends BehatContext
     {
         $payload = $this->getResponsePayload();
 
-        if (! $this->scope) {
+        if (!$this->scope) {
             return $payload;
         }
 
@@ -679,10 +687,10 @@ class ApiFeatureContext extends BehatContext
      *
      * @copyright   Taylor Otwell
      * @link        http://laravel.com/docs/helpers
-     * @param       array   $array
-     * @param       string  $key
-     * @param bool  $throwOnMissing
-     * @param bool  $checkForPresenceOnly If true, this function turns into arrayHas
+     * @param       array $array
+     * @param       string $key
+     * @param bool $throwOnMissing
+     * @param bool $checkForPresenceOnly If true, this function turns into arrayHas
      *                                    it just returns true/false if it exists
      * @return mixed
      * @throws Exception
@@ -708,7 +716,7 @@ class ApiFeatureContext extends BehatContext
                 $array = $array->{$segment};
 
             } elseif (is_array($array)) {
-                if (! array_key_exists($segment, $array)) {
+                if (!array_key_exists($segment, $array)) {
                     if ($throwOnMissing) {
                         throw new \Exception(sprintf('Cannot find the key "%s"', $key));
                     }
@@ -750,7 +758,7 @@ class ApiFeatureContext extends BehatContext
                 $response->setBody(json_encode($data, JSON_PRETTY_PRINT));
             }
 
-            $this->printDebug((string) $response);
+            $this->printDebug((string)$response);
         }
     }
 
@@ -772,7 +780,7 @@ class ApiFeatureContext extends BehatContext
      */
     private function getOutput()
     {
-        if ($this->output === null)  {
+        if ($this->output === null) {
             $this->output = new ConsoleOutput();
         }
 
@@ -802,11 +810,11 @@ class ApiFeatureContext extends BehatContext
         );
 
         while (false !== $startPos = strpos($payload, '%')) {
-            $endPos = strpos($payload, '%', $startPos+1);
+            $endPos = strpos($payload, '%', $startPos + 1);
             if (!$endPos) {
                 throw new \Exception('Cannot find finishing % - expression look unbalanced!');
             }
-            $expression = substr($payload, $startPos+1, $endPos - $startPos - 1);
+            $expression = substr($payload, $startPos + 1, $endPos - $startPos - 1);
 
             // evaluate the expression
             try {
@@ -818,7 +826,7 @@ class ApiFeatureContext extends BehatContext
                 throw $e;
             }
             // replace the expression with the final value
-            $payload = str_replace('%'.$expression.'%', $evaluated, $payload);
+            $payload = str_replace('%' . $expression . '%', $evaluated, $payload);
         }
 
         return $payload;
