@@ -57,8 +57,8 @@ class ProgrammerController extends BaseController
         $programmer = $this->getProgrammerRepository()
             ->findOneByNickname($nickname);
 
-        if ($programmer) {
-            $this->throw404("Oh no! This programmer has deserted. we'll send a serch patrol to search him");
+        if (!$programmer) {
+            $this->throw404('Oh no! This programmer has deserted. we\'ll send a serch patrol to search him');
         }
 
         $this->handleRequest($request, $programmer);
@@ -82,8 +82,8 @@ class ProgrammerController extends BaseController
         $programmer = $this->getProgrammerRepository()
             ->findOneByNickname($nickname);
 
-        if ($programmer) {
-            $this->throw404("Oh no! This programmer has deserted. we'll send a serch patrol to search him");
+        if (!$programmer) {
+            $this->throw404('Oh no! This programmer has deserted. We will send a serch patrol to search him');
         }
 
         $data = $this->serializeProgrammer($programmer);
